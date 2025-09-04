@@ -1,15 +1,19 @@
-# mapudungun-corpus
+# Mapudungun corpus
 
 This repository contains the cleaned version of the Mapudungun dataset collected for the AVENUE project by CMU, the Chilean Ministry of Education, and the Instituto de Estudios Indígenas at Universidad de La Frontera.
 
 You can download the raw audio data for all files from [here](http://tts.speech.cs.cmu.edu/mapudungun/AUDIO.zip).
 
-The `TRANSCRIPTION` and `TRANSLATION` directories include the original transcriptions and translations.
-The `transcription-clean` and `translation-clean` directories include cleaned versions with additional annotations removed, in order to be used for speech recognition, synthesis, and machine translation experiments. The necessary scripts for producing these clean versions are available in the `data-cleaning` directory.
+---
+# Usage
 
-The training, dev, and test dataset splits for our baseline experiments are listed under `dataset_splits`.
+Run the `clean_transcriptions.py` script inside `src/data_cleaning`.
 
-# Baseline Results 
+```bash
+python clean_transcriptions.py data/raw/transcriptions data/cleaned/transcriptions
+```
+
+---
 
 # Citation
 
