@@ -1,4 +1,6 @@
 # Mapudungun corpus
+![](https://img.shields.io/badge/version-v1.0.0-brightgreen.svg)
+[![Python 3.9](https://img.shields.io/badge/python-3.9-brightgreen.svg)](https://www.python.org/downloads/release/python-3/)
 
 This repository contains the cleaned version of the Mapudungun dataset collected for the AVENUE project by CMU, the Chilean Ministry of Education, and the Instituto de Estudios Indígenas at Universidad de La Frontera.
 
