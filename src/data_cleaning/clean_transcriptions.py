@@ -11,6 +11,7 @@ def clean_annotations(text: str) -> str:
         "<*spa>",
         "*spa>",
         "<*spa",
+        "<*spa>",
         "<spa>",
         "< spa>",
         "< *spa>",
@@ -31,6 +32,7 @@ def clean_annotations(text: str) -> str:
         "<smack>",
         "<!",
         "<(",
+        "...",
     ]
     for r in replacements:
         text = text.replace(r, "")
@@ -62,6 +64,9 @@ def clean(path_input: str, path_output: str) -> None:
             l = re.sub(r"(\d{2}):\s*", r"\1: ", l)
             # remove starting dialog tag
             l = re.sub(r"^.+_\d{4}_.+_\d{2}: ", "", l)
+            # remove control char tags, like (like 0x13) in nfmcp-nmacq1.trl
+            l = re.sub(r'^[\x00-\x1F]+', '', l)
+            l = re.sub(r'^\S+?:\s*', '', l)
             # remove annotations
             l = clean_annotations(text=l)
             # clean mapuche tags
@@ -71,7 +76,8 @@ def clean(path_input: str, path_output: str) -> None:
             # *(?:>(?:\s+)?|\s+|$)', '', l)
             # clean remaining tags
             l = re.sub(r"<[^>]+>", "", l)
-
+            # remove extra spaces
+            l = re.sub(r'\s+', ' ', l)
             # left and right strip spaces
             l = l.strip(" ")
             # remove resulting empty lines
